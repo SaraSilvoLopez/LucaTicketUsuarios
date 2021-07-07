@@ -1,8 +1,8 @@
-package com.example.repository;
-import com.example.model.Usuario;
-
+package com.example.spring.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.example.spring.model.Usuario;
 
 /**
  * @ClassName UsuarioRepository
@@ -18,5 +18,4 @@ import org.springframework.stereotype.Repository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-	//Usuario addUsuario(String nombre);
 }
