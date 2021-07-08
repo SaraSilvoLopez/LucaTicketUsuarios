@@ -44,6 +44,6 @@ public class Usuario {
 	private String apellido;
 	private String mail;
 	private String contrasenia;
-	private Date fecha_alta;
+	private String fecha_alta;
 	
 }
