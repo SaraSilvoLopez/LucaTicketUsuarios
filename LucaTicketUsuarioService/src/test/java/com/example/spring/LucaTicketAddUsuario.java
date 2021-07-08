@@ -9,9 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -20,20 +22,22 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.example.spring.controller.UsuarioController;
 import com.example.spring.model.Usuario;
 import com.example.spring.repository.UsuarioRepository;
+import com.example.spring.service.UsuarioService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(UsuarioController.class)
+//@SpringBootConfiguration
+//@ContextConfiguration("/applicationContext.xml")
 
-
-public class LucaTicketAddUsuario2 {
+public class LucaTicketAddUsuario {
 
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@MockBean
-	private UsuarioRepository repo;
+	private UsuarioService serv;
 
 	@Autowired
 	ObjectMapper mapper;
@@ -48,15 +52,22 @@ public class LucaTicketAddUsuario2 {
 		usuario.setContrasenia("ieo20");
 		usuario.setFecha_alta("2021/07/07");
 
-		Mockito.when(repo.save(usuario)).thenReturn(usuario);
+		Mockito.when(serv.save(usuario)).thenReturn(usuario);
 
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/usuarios/add")
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
 				.content(this.mapper.writeValueAsString(usuario));
 
-		mockMvc.perform(mockRequest).andExpect(status().isOk()).andExpect(jsonPath("$", notNullValue()))
-				.andExpect(jsonPath("$.nombre", is("Pedro")));
+		mockMvc.perform(mockRequest).andExpect(status().isOk())
+		.andExpect(jsonPath("$", notNullValue()))
+		.andExpect(jsonPath("$.nombre", is("Pedro")))
+		.andExpect(jsonPath("$.apellido", is("Blasco")))
+		.andExpect(jsonPath("$.mail", is("blasco@gmail.com")))
+		.andExpect(jsonPath("$.contrasenia", is("ieo20")))
+		.andExpect(jsonPath("$.fecha_alta", is("2021/07/07")))
+		;
 
 	}
+	
 
 }
