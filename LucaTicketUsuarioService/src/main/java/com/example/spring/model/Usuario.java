@@ -1,6 +1,6 @@
 package com.example.spring.model;
 
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,6 +61,6 @@ public class Usuario {
 	private String apellido;
 	private String mail;
 	private String contrasenia;
-	private Date fecha_alta;
+	private String fecha_alta;
 	
 }
