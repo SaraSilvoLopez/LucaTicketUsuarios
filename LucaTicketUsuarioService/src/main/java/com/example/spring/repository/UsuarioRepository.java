@@ -5,14 +5,16 @@ import org.springframework.stereotype.Repository;
 import com.example.spring.model.Usuario;
 
 /**
+ * @Project LucaTicketUsuarioService
+ *
  * @ClassName UsuarioRepository
  *
  * @author Jennifer Pérez
- * @date 06 jul. 2021
+ *
+ * @date 7 jul. 2021
  * 
- * @version 2.0
+ * @version 1.0
  */
-
 
 @Repository
 
