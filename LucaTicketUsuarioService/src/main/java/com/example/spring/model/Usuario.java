@@ -1,6 +1,6 @@
 package com.example.spring.model;
 
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,24 +14,41 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * @Project LucaTicketUsuarioService
+ *
  * @ClassName Usuario
  *
  * @author Jennifer Pérez
  *
- * @date 06 jul. 2021
+ * @date 7 jul. 2021
  * 
- * @version 2.0
+ * @version 1.0
  */
-
-
 
 /**
- * Implementamos Lombok, por lo que con la anotación @Data, quedan incluidos:
+ * Implementamos Lombok, con @Data quedan incluidos: 
  * @Getter, @Setter, @RequiredArgsConstructor, @EqualsAndHashCode y @ToString.
- * @AllArgsConstructor crea el constructor con argumentos, y 
- * @NoArgsConstructor crea el constructor vacío.
  */
-@Data @AllArgsConstructor @NoArgsConstructor
+@Data 
+
+/**
+ * Constructor de la clase Usuario con parámetros
+ *
+ * @param id
+ * @param nombre
+ * @param apellido
+ * @param mail
+ * @param contrasenia
+ * @param fecha_alta
+ */
+@AllArgsConstructor 
+
+/**
+ * Constructor de la clase Usuario vacío
+ *
+ */
+@NoArgsConstructor
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
