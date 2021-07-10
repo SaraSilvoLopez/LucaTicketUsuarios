@@ -35,12 +35,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(UsuarioController.class)
-<<<<<<< HEAD:LucaTicketUsuarioService/src/test/java/com/example/spring/LucaTicketAddUsuario2.java
-public class LucaTicketAddUsuario2 {
-=======
-
 public class LucaTicketAddUsuario {
->>>>>>> 58c213016c67777df44a367ff07a1930ac0b626b:LucaTicketUsuarioService/src/test/java/com/example/spring/LucaTicketAddUsuario.java
 
 	@Autowired
 	private MockMvc mockMvc;
