@@ -54,7 +54,7 @@ public class LucaTicketAddUsuario {
 		usuario.setApellido("Blasco");
 		usuario.setMail("blasco@gmail.com");
 		usuario.setContrasenia("ieo20");
-		usuario.setFecha_alta("2021/07/07");
+		usuario.setFecha_alta("2021-07-07");
 
 		Mockito.when(serv.save(usuario)).thenReturn(usuario);
 
