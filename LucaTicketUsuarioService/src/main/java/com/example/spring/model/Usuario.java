@@ -1,8 +1,6 @@
 package com.example.spring.model;
 
-
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -63,6 +61,6 @@ public class Usuario {
 	private String apellido;
 	private String mail;
 	private String contrasenia;
-	private String fecha_alta;
+	private LocalDateTime fecha_alta;
 	
 }
