@@ -5,6 +5,8 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -54,7 +56,8 @@ public class LucaTicketAddUsuario {
 		usuario.setApellido("Blasco");
 		usuario.setMail("blasco@gmail.com");
 		usuario.setContrasenia("ieo20");
-		usuario.setFecha_alta("2021-07-07");
+		LocalDateTime Date = LocalDateTime.parse("2021-07-07");
+		usuario.setFecha_alta(Date);
 
 		Mockito.when(serv.save(usuario)).thenReturn(usuario);
 
