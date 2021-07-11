@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -61,6 +64,7 @@ public class Usuario {
 	private String apellido;
 	private String mail;
 	private String contrasenia;
+	@JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDateTime fecha_alta;
 	
 }
