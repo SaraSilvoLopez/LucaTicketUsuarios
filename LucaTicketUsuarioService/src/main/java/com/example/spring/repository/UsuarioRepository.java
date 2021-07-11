@@ -9,7 +9,7 @@ import com.example.spring.model.Usuario;
  *
  * @ClassName UsuarioRepository
  *
- * @author Jennifer Pérez
+ * @author Jennifer Pérez y Sara Silvo
  *
  * @date 7 jul. 2021
  * 

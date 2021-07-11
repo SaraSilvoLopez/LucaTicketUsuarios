@@ -7,7 +7,7 @@ import com.example.spring.model.Usuario;
  *
  * @ClassName UsuarioService
  *
- * @author Jennifer Pérez
+ * @author Jennifer Pérez y Sara Silvo
  *
  * @date 7 jul. 2021
  * 
@@ -16,11 +16,7 @@ import com.example.spring.model.Usuario;
 
 public interface UsuarioService {
 	
-	/**
-	 * @param usuario
-	 * @return
-	 */
-	
+
 	public Usuario save(Usuario usuario);
 
 }

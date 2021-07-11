@@ -29,7 +29,7 @@ import lombok.Setter;
 
 /**
  * Crea la clase ApiError
- * Utiliza Lombok para crear los metodos get, set y los constructores 
+ * Utiliza Lombok para crear los metodos get, set y los constructores vacio y con argumentos 
  *
  */
 @Setter

@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.spring.exception.DemasiadoLargoException;
+import com.example.spring.exception.DemasiadosCaracteres;
 import com.example.spring.exception.EmailExistenteException;
-import com.example.spring.exception.NumeroException;
+import com.example.spring.exception.TipoCaracteresException;
 import com.example.spring.exception.VacioException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -26,14 +26,14 @@ public class GlobalControllerAdvice {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
 		
-	@ExceptionHandler(NumeroException.class)
-	public ResponseEntity<ApiError> UsuarioNoEncontrado(NumeroException ex) {
+	@ExceptionHandler(TipoCaracteresException.class)
+	public ResponseEntity<ApiError> UsuarioNoEncontrado(TipoCaracteresException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
 	
 	@ExceptionHandler(VacioException.class)
-	public ResponseEntity<ApiError> handleNumeroEncontrado(NumeroException ex) {
+	public ResponseEntity<ApiError> handleNumeroEncontrado(TipoCaracteresException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
@@ -42,8 +42,8 @@ public class GlobalControllerAdvice {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
-	@ExceptionHandler(DemasiadoLargoException.class)
-	public ResponseEntity<ApiError> handleDemasiadoLargo(DemasiadoLargoException ex) {
+	@ExceptionHandler(DemasiadosCaracteres.class)
+	public ResponseEntity<ApiError> handleDemasiadoLargo(DemasiadosCaracteres ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}

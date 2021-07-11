@@ -1,15 +1,25 @@
 package com.example.spring.exception;
 
+/**
+ * @Project LucaTicketUsuarioService
+ *
+ * @ClassName LucaTicketUsuarioServiceApplication
+ *
+ * @author Jennifer Pérez y Sara Silvo
+ *
+ * @date 7 jul. 2021
+ * 
+ * @version 1.0
+ */
+
 public class EmailExistenteException extends RuntimeException {
-	//RuntimeException es una clase que representa las excepciones que ocurren dentro 
-	//de la máquina virtual Java (durante el tiempo de ejecución).
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 3L;
-	//Recordar: Serializar es como comprimir. 
-	//serialVersionUID hay que ponerlo siempre así. Es el número de versión para esa clase.
 	
+	/**
+	 * Personaliza el mensaje de error cuando el valor introducido en el campo mail
+	 * ya existe en la base de datos
+	 */
 	public EmailExistenteException() {
 		super("El email introducido ya se encuentra en la base de datos");
 	}

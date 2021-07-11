@@ -32,11 +32,16 @@ public class UsuarioController {
 	private UsuarioService serv;
 
 	
+	/**
+	 * Guarda el usuario en la base de datos y devuelve estado de la peticion
+	 */
 	/*@PostMapping("/usuarios/add")
 	public ResponseEntity<String> addUsuario(@RequestBody Usuario usuario) {
 		Usuario nuevoUsuario = this.serv.save(usuario);
-		return new ResponseEntity<>("El usuario se ha guardado correctamente" + nuevoUsuario.toString(),HttpStatus.CREATED );
-		*/
+		return new ResponseEntity<>("El usuario se ha guardado correctamente \n" + nuevoUsuario.toString()
+		,HttpStatus.CREATED );
+	}
+	*/
 	@PostMapping("/usuarios/add")
 	public Usuario addUsuario(@RequestBody Usuario usuario) {
 

@@ -12,7 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * * @Project LucaTicketUsuarioService
+ * @Project LucaTicketUsuarioService
  *
  * @ClassName LucaTicketUsuarioServiceApplication
  *
@@ -26,15 +26,19 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 /**
- * Crea la clase ApiErrorAttributes extendida de DefaultErrorAttributes
- *
+ * Crea la clase ApiErrorAttributes extendida de DefaultErrorAttributes de la que herdara los atributos
+ * timestamp -la hora a la que se extrajeron los errores
+ * status - el código de estado
+ * error - el motivo del error
+ * message - el mensaje del error (cuando se configura)
+ * 
  */
 @Component
 public class ApiErrorAttributes extends DefaultErrorAttributes {
 
-    @Override
-    public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
-        Map<String, Object> allErrorAttributes = super.getErrorAttributes(webRequest, includeStackTrace);
+    
+    public Map<String, Object> getErrorAttributes(WebRequest webRequest) {
+        Map<String, Object> allErrorAttributes = super.getErrorAttributes(webRequest, null);
 
         Map<String, Object> errorAttributes = new HashMap<>();
         int statusCode = (int) allErrorAttributes.get("status");
