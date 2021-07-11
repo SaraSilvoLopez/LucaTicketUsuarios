@@ -6,22 +6,34 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.spring.exception.NuevoUsuarioException;
+import com.example.spring.exception.EmailExistente;
+import com.example.spring.exception.NumeroException;
+import com.example.spring.exception.VacioException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @RestControllerAdvice
 public class GlobalControllerAdvice {
-	
-	@ExceptionHandler(NuevoUsuarioException.class)
-	public ResponseEntity<ApiError> handleProductoNoEncontrado(NuevoUsuarioException ex) {
-		ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, ex.getMessage());
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
-	}
 	
 	@ExceptionHandler(JsonMappingException.class)
 	public ResponseEntity<ApiError> handleJsonMappingException(JsonMappingException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
-
+		
+	@ExceptionHandler(NumeroException.class)
+	public ResponseEntity<ApiError> UsuarioNoEncontrado(NumeroException ex) {
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+	}
+	
+	@ExceptionHandler(VacioException.class)
+	public ResponseEntity<ApiError> handleNumeroEncontrado(NumeroException ex) {
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+	}
+	@ExceptionHandler(EmailExistente.class)
+	public ResponseEntity<ApiError> handleEmailEncontrado(EmailExistente ex) {
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+	}
 }
