@@ -11,6 +11,24 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * * @Project LucaTicketUsuarioService
+ *
+ * @ClassName LucaTicketUsuarioServiceApplication
+ *
+ * @author Jennifer Pérez y Sara Silvo
+ *
+ * @date 7 jul. 2021
+ * 
+ * @version 1.0
+ */
+
+
+
+/**
+ * Crea la clase ApiErrorAttributes extendida de DefaultErrorAttributes
+ *
+ */
 @Component
 public class ApiErrorAttributes extends DefaultErrorAttributes {
 
