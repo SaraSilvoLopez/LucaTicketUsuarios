@@ -2,6 +2,8 @@ package com.example.spring.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,9 +39,14 @@ public class UsuarioController {
 	 * @param usuario
 	 * @return
 	 */
+	/*@PostMapping("/usuarios/add")
+	public ResponseEntity<String> addUsuario(@RequestBody Usuario usuario) {
+		Usuario nuevoUsuario = this.serv.save(usuario);
+		return new ResponseEntity<>("El usuario se ha guardado correctamente" + nuevoUsuario.toString(),HttpStatus.CREATED );
+		*/
 	@PostMapping("/usuarios/add")
 	public Usuario addUsuario(@RequestBody Usuario usuario) {
 		return this.serv.save(usuario);
-		
-	}	
-}
+	}
+}	
+
