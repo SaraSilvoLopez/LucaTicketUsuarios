@@ -1,9 +1,11 @@
 package com.example.spring.service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.spring.exception.DemasiadosCaracteres;
@@ -12,6 +14,8 @@ import com.example.spring.exception.TipoCaracteresException;
 import com.example.spring.exception.VacioException;
 import com.example.spring.model.Usuario;
 import com.example.spring.repository.UsuarioRepository;
+
+import lombok.RequiredArgsConstructor;
 
 /**
  * @Project LucaTicketUsuarioService
@@ -26,8 +30,11 @@ import com.example.spring.repository.UsuarioRepository;
  */
 
 @Service
+@RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioService {
 
+	private final PasswordEncoder encoder;
+	
 	/**
 	 * Instancia UsuarioRepository repo
 	 */
@@ -56,7 +63,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 					&& usuario.getMail().length() <=50) {
 				if (contieneSoloLetras(usuario.getNombre()) 
 						&& contieneSoloLetras(usuario.getApellido())) {
-					
+					usuario.setContrasenia(encoder.encode(usuario.getPassword()));
+					usuario.setRol("USER");
 					try {
 						usuario.setFecha_alta(LocalDateTime.now());
 						return this.repo.save(usuario); 
@@ -84,6 +92,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 			}
 		}
 		return true;
+	}
+	
+	public Optional<Usuario> findByMail(String mail){
+		return repo.findByMail(mail);
+	}
+	
+	public Optional<Usuario> findById(int id){
+		return repo.findById(id);
 	}
 	
 }

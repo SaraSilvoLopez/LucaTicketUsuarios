@@ -47,4 +47,16 @@ public class UsuarioController {
 
 		return this.serv.save(usuario);
 	}
+	
+	@RequestMapping("/greeting")
+	public String greeting() {
+		
+		return "greeting";
+	}
+	
+	@RequestMapping("/greetingAdmin")
+	public String greetingAdmin() {
+		
+		return "greeting Admin";
+	}
 }
