@@ -23,7 +23,6 @@ import com.example.spring.service.UsuarioService;
  */
 @RestController
 @RequestMapping 
-
 public class UsuarioController {
 	/**
 	 * Atributo serv
