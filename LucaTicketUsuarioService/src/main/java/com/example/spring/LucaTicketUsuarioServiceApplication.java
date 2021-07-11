@@ -9,7 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *
  * @ClassName LucaTicketUsuarioServiceApplication
  *
- * @author Jennifer Pérez
+ * @author Jennifer Pérez y Sara Silvo
  *
  * @date 7 jul. 2021
  * 

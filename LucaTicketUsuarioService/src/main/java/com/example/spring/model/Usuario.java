@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,35 +21,21 @@ import lombok.NoArgsConstructor;
  *
  * @ClassName Usuario
  *
- * @author Jennifer Pérez
+ * @author Jennifer Pérez y Sara Silvo
  *
  * @date 7 jul. 2021
  * 
  * @version 1.0
  */
 
+
 /**
- * Implementamos Lombok, con @Data quedan incluidos: 
- * @Getter, @Setter, @RequiredArgsConstructor, @EqualsAndHashCode y @ToString.
+ * Crea la clase Usuario
+ * Utiliza Lombok para crear los metodos get, set y los constructores vacio y con argumentos 
+ *
  */
 @Data 
-
-/**
- * Constructor de la clase Usuario con parámetros
- *
- * @param id
- * @param nombre
- * @param apellido
- * @param mail
- * @param contrasenia
- * @param fecha_alta
- */
 @AllArgsConstructor 
-
-/**
- * Constructor de la clase Usuario vacío
- *
- */
 @NoArgsConstructor
 
 @Entity
@@ -61,6 +50,7 @@ public class Usuario {
 	private String apellido;
 	private String mail;
 	private String contrasenia;
+	@JsonFormat(shape = Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDateTime fecha_alta;
 	
 }
