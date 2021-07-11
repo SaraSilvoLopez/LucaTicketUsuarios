@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.spring.exception.NuevoUsuarioException;
 import com.example.spring.model.Usuario;
 import com.example.spring.service.UsuarioService;
 
@@ -47,11 +48,15 @@ public class UsuarioController {
 	@PostMapping("/usuarios/add")
 	public Usuario addUsuario(@RequestBody Usuario usuario) {
 		try {
+			
+			//throw new ResponseStatusException(HttpStatus.ACCEPTED, "Usuario creado con exito");
 		return this.serv.save(usuario);
 				}catch (DataIntegrityViolationException ex) {
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email ya existe");
+					
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se puede crear el usuario. Datos introducidos erroneos");
 				}
 				
 		
-	}	
+	}
+		
 }
