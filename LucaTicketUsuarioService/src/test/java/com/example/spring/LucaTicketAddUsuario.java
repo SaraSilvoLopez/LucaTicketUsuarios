@@ -29,7 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
  * @ClassName LucaTicketAddUsuario
  *
- * @author Jennifer Sara Silvo
+ * @author Jennifer Perez y Sara Silvo
  *
  * @date 7 jul. 2021
  * 

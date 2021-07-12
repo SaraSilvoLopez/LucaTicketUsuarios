@@ -37,8 +37,8 @@ import org.springframework.web.server.ResponseStatusException;
 public class ApiErrorAttributes extends DefaultErrorAttributes {
 
     
-    public Map<String, Object> getErrorAttributes(WebRequest webRequest) {
-        Map<String, Object> allErrorAttributes = super.getErrorAttributes(webRequest, null);
+	public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
+		Map<String, Object> allErrorAttributes = super.getErrorAttributes(webRequest, includeStackTrace);
 
         Map<String, Object> errorAttributes = new HashMap<>();
         int statusCode = (int) allErrorAttributes.get("status");

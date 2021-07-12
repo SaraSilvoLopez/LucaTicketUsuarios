@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.spring.exception.DemasiadosCaracteres;
+import com.example.spring.exception.DemasiadosCaracteresException;
 import com.example.spring.exception.EmailExistenteException;
 import com.example.spring.exception.TipoCaracteresException;
 import com.example.spring.exception.VacioException;
@@ -42,8 +42,8 @@ public class GlobalControllerAdvice {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
-	@ExceptionHandler(DemasiadosCaracteres.class)
-	public ResponseEntity<ApiError> handleDemasiadoLargo(DemasiadosCaracteres ex) {
+	@ExceptionHandler(DemasiadosCaracteresException.class)
+	public ResponseEntity<ApiError> handleDemasiadoLargo(DemasiadosCaracteresException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}

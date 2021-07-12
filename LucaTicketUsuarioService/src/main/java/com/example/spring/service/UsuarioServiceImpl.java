@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.example.spring.exception.DemasiadosCaracteres;
+import com.example.spring.exception.DemasiadosCaracteresException;
 import com.example.spring.exception.EmailExistenteException;
 import com.example.spring.exception.TipoCaracteresException;
 import com.example.spring.exception.VacioException;
@@ -67,7 +67,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 					throw new TipoCaracteresException();
 				}
 			} else {
-				throw new DemasiadosCaracteres();
+				throw new DemasiadosCaracteresException();
 			}
 		} else {
 			

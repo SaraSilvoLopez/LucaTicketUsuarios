@@ -11,13 +11,13 @@ package com.example.spring.exception;
  * 
  * @version 1.0
  */
-public class DemasiadosCaracteres extends RuntimeException {
+public class DemasiadosCaracteresException extends RuntimeException {
 	private static final long serialVersionUID = 4L;
 
 	/**
 	 * Personaliza el mensaje de error cuando el valor introducido supera los 50 caracteres
 	 */
-	public DemasiadosCaracteres() {
+	public DemasiadosCaracteresException() {
 		super("El tamaño máximo son 50 caracteres");
 	}
 
