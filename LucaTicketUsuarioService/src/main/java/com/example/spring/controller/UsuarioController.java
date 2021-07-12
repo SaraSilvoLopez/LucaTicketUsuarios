@@ -41,12 +41,18 @@ public class UsuarioController {
 		return new ResponseEntity<>("El usuario se ha guardado correctamente \n" + nuevoUsuario.toString()
 		,HttpStatus.CREATED );
 	}
-	/*
-	@PostMapping("/usuarios/add")
-	public Usuario addUsuario(@RequestBody Usuario usuario) {
-
-		return this.serv.save(usuario);
-	}
-	*/
 	
+	
+	@RequestMapping("/greeting")
+	public String greeting() {
+		
+		return "greeting";
+	}
+	
+	@RequestMapping("/greetingAdmin")
+	public String greetingAdmin() {
+		
+		return "greeting Admin";
+	}
+
 }

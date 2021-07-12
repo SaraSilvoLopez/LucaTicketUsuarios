@@ -37,9 +37,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(UsuarioController.class)
-
 public class LucaTicketAddUsuario {
-
 
 	@Autowired
 	private MockMvc mockMvc;
