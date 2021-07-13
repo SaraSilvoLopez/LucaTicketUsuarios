@@ -19,6 +19,8 @@
 		<spring.fox.version>2.9.2</spring.fox.version>
 		<spring-cloud.version>Hoxton.SR11</spring-cloud.version>
 		<lombok.version>1.18.20</lombok.version>
+		<groovy.version>3.0.7</groovy.version>
+		<rest-assured.version>4.3.3</rest-assured.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -102,6 +104,46 @@
 			<version>0.10.7</version>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<dependency>
+           <groupId>io.rest-assured</groupId>
+           <artifactId>spring-mock-mvc</artifactId>
+           <scope>test</scope>
+           <exclusions>
+               <exclusion>
+                   <artifactId>groovy</artifactId>
+                   <groupId>org.codehaus.groovy</groupId>
+               </exclusion>
+           </exclusions>
+       </dependency>
+       <dependency>
+           <groupId>org.codehaus.groovy</groupId>
+           <artifactId>groovy</artifactId>
+           <version>${groovy.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.codehaus.groovy</groupId>
+           <artifactId>groovy-xml</artifactId>
+           <version>${groovy.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.codehaus.groovy</groupId>
+           <artifactId>groovy-json</artifactId>
+           <version>${groovy.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>io.rest-assured</groupId>
+           <artifactId>json-path</artifactId>
+           <version>${rest-assured.version}</version>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>io.rest-assured</groupId>
+           <artifactId>xml-path</artifactId>
+           <version>${rest-assured.version}</version>
+           <scope>test</scope>
+       </dependency>
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
