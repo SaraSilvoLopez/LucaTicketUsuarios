@@ -11,9 +11,9 @@ import static io.restassured.RestAssured.given;
 public class LucaTicketGetUsuariosTest {
 
 	@Test
-	public void getEventosTest() {
+	public void getUsuariosTest() {
 		given().log().all()
-			.port(2222).get("/usuarios")
+			.port(2222).get("/")
 		.then().log().all()
 			.statusCode(200)
 			.body("nombre",	hasItems("Godofreo"));
