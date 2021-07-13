@@ -29,7 +29,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	Optional<Usuario> findByMail(String mail);
 	
 	@Modifying
-    @Query("update Usuario u set u.nombre = ?1, u.apellido = ?2 where u.id = ?3 u.mail = ?4 where u.contrasenia = ?5")
+	@Query("update Usuario u set u.nombre = ?1, u.apellido = ?2,u.mail = ?4, u.contrasenia = ?5  where u.id = ?3  ")
     void editar(String nombre, String apellido, int id, String mail, String contrasenia);
 	
 
