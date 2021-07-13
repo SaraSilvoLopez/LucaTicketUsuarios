@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.example.spring.exception.DemasiadosCaracteresException;
 import com.example.spring.exception.EmailExistenteException;
 import com.example.spring.exception.TipoCaracteresException;
+import com.example.spring.exception.UsuarioNoEncontradoException;
 import com.example.spring.exception.VacioException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -49,6 +50,11 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler{
 	public ResponseEntity<ApiError> handleDemasiadoLargo(DemasiadosCaracteresException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+	}
+	@ExceptionHandler(UsuarioNoEncontradoException.class)
+	public ResponseEntity<ApiError> handleNoSeEncuentra(UsuarioNoEncontradoException ex) {
+		ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, ex.getMessage());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
 	}
 	
 	@Override

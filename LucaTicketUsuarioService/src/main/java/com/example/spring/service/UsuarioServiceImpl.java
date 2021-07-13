@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.example.spring.exception.DemasiadosCaracteresException;
 import com.example.spring.exception.EmailExistenteException;
 import com.example.spring.exception.TipoCaracteresException;
+//import com.example.spring.exception.UsuarioNoEncontradoException;
 import com.example.spring.exception.VacioException;
 import com.example.spring.model.Usuario;
 import com.example.spring.repository.UsuarioRepository;
@@ -35,7 +36,7 @@ import lombok.RequiredArgsConstructor;
 public class UsuarioServiceImpl implements UsuarioService {
 
 	private final PasswordEncoder encoder;
-	
+
 	/**
 	 * Instancia UsuarioRepository repo
 	 */
@@ -44,47 +45,40 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private UsuarioRepository repo;
 
 	/**
-	 * Implementación/Sobrescritura del método save
-	 * Con la estructura if
+	 * Implementación/Sobrescritura del método save Con la estructura if
 	 *
 	 * @param usuario
 	 * @return
 	 */
-	
+
 	@Override
 	public Usuario save(Usuario usuario) {
-		
-		if (usuario.getNombre() != null 
-				&& usuario.getApellido() != null 
-				&& usuario.getContrasenia() != null
+
+		if (usuario.getNombre() != null && usuario.getApellido() != null && usuario.getContrasenia() != null
 				&& usuario.getMail() != null) {
-			if (usuario.getNombre().length() <= 50 
-					&& usuario.getApellido().length() <= 50 
-					&& usuario.getContrasenia().length() <=50 
-					&& usuario.getMail().length() <=50) {
-				if (contieneSoloLetras(usuario.getNombre()) 
-						&& contieneSoloLetras(usuario.getApellido())) {
+			if (usuario.getNombre().length() <= 50 && usuario.getApellido().length() <= 50
+					&& usuario.getContrasenia().length() <= 50 && usuario.getMail().length() <= 50) {
+				if (contieneSoloLetras(usuario.getNombre()) && contieneSoloLetras(usuario.getApellido())) {
 					usuario.setContrasenia(encoder.encode(usuario.getPassword()));
 					usuario.setRol("USER");
 					try {
 						usuario.setFecha_alta(LocalDateTime.now());
-						return this.repo.save(usuario); 
-					} catch (DataIntegrityViolationException ex) { 
-						throw new EmailExistenteException();						
+						return this.repo.save(usuario);
+					} catch (DataIntegrityViolationException ex) {
+						throw new EmailExistenteException();
 					}
-				} else {					
+				} else {
 					throw new TipoCaracteresException();
 				}
 			} else {
 				throw new DemasiadosCaracteresException();
 			}
 		} else {
-			
+
 			throw new VacioException();
 		}
 	}
 
-	
 	public static boolean contieneSoloLetras(String cadena) {
 		for (int x = 0; x < cadena.length(); x++) {
 			char c = cadena.charAt(x);
@@ -94,33 +88,31 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		return true;
 	}
-	
-	public Optional<Usuario> findByMail(String mail){
+
+	public Optional<Usuario> findByMail(String mail) {
 		return repo.findByMail(mail);
 	}
-	
-	public Optional<Usuario> findById(int id){
+
+	public Optional<Usuario> findById(int id) {
 		return repo.findById(id);
+				//.orElseThrow(UsuarioNoEncontradoException::new);
 	}
-	
+
 	@Override
 	public List<Usuario> findAll() {
 		return repo.findAll();
 	}
-	
-	/*@Override
-	public Optional<Usuario> updateUsuario(Usuario usuario) {
-		return repo.updateUsuario(usuario);
-	}
-	
+
 	@Override
-	public Optional<Usuario> findById(int id);{
-		return repo.findById(id);
-	}*/
+	public Optional<Usuario> edit(Usuario usuario) {
+		repo.editar(usuario.getNombre(),usuario.getApellido(), usuario.getId(), usuario.getMail(), usuario.getContrasenia());
+		return repo.findById(usuario.getId());
+		//.orElseThrow(UsuarioNoEncontradoException::new);
+	}
 
 	@Override
 	public void deleteById(int id) {
 		repo.deleteById(id);
 	}
-	
+
 }

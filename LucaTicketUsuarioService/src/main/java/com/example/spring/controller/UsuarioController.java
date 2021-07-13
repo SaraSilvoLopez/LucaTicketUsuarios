@@ -1,8 +1,7 @@
 package com.example.spring.controller;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,14 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 
 import com.example.spring.model.Usuario;
-import com.example.spring.repository.UsuarioRepository;
 import com.example.spring.service.UsuarioService;
-import com.example.spring.service.UsuarioServiceImpl;
-
 
 /**
  * @Project LucaTicketUsuarioService
@@ -39,7 +33,7 @@ import com.example.spring.service.UsuarioServiceImpl;
 @RequestMapping 
 public class UsuarioController {
 	/**
-	 * Inicializa UsuarioService sev
+	 * Inicializa UsuarioService serv
 	 */
 	@Autowired
 	private UsuarioService serv;
@@ -56,57 +50,6 @@ public class UsuarioController {
 	}
 	
 	
-	/**
-	 * Método para listar todos los usuarios de la BBDDs
-	 * 
-	 * @return List<Usuario>
-	 */
-	@GetMapping
-	public List<Usuario> getUsuarios() {
-		
-		return serv.findAll();
-	}
-	/*
-	@GetMapping("/usuarios/{id}")
-	public Usuario getUsuario(@PathVariable int id) {
-		return serv.findById(id).orElseThrow(UsuarioNotFoundException::new);
-	}*/
-	
-	@DeleteMapping("/usuarios/delete/{id}")
-	public ResponseEntity<?> deleteUsuario(@PathVariable("id") int id) {
-		
-		try {
-			if (serv.findById(id).isPresent()) {
-				serv.deleteById(id);
-				return ResponseEntity.ok().build();
-			} else {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-			}
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
-	}
-	
-	@PutMapping("/usuarios/update")
-	public ResponseEntity<?> updateUsuario(@RequestBody Usuario usuario) {
-		
-		try {
-			if (serv.findById(usuario.getId()).isPresent()) {
-				Usuario usuarioModificado = serv.save(usuario);
-				URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-						.buildAndExpand(usuarioModificado.getId()).toUri();
-				return ResponseEntity.created(location).build();
-			} else {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-			}
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
-		}
-	}
-	
-	
-	
-	
 	@RequestMapping("/greeting")
 	public String greeting() {
 		
@@ -114,9 +57,28 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/greetingAdmin")
-	public String greetingAdmin() {
+	public String greetingAdmin(){
 		
 		return "greeting Admin";
+	}
+	@GetMapping
+	public Collection<Usuario> mostrarUsuarios() {
+		return serv.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public Optional<Usuario> mostrarUsuario(@PathVariable int id) {
+		return serv.findById(id);
+	}
+	
+	@PutMapping("/usuarios/edit")
+    public Optional<Usuario> editUsuario(@RequestBody Usuario usuario) {
+        return this.serv.edit(usuario);
+    }
+	
+	@DeleteMapping("/{id}")
+	public void deleteUsuario(@PathVariable int id) {
+		serv.deleteById(id);
 	}
 
 }

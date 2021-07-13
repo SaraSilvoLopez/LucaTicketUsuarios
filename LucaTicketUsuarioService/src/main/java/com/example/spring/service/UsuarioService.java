@@ -21,16 +21,15 @@ public interface UsuarioService {
 	
 
 	public Usuario save(Usuario usuario);
-
+	
 	public Optional<Usuario> findByMail(String mail);
-
-	//public Optional<Usuario> findById(int id);
-
+	
+	public Optional<Usuario> findById(int id);
+	
 	public List<Usuario> findAll();
-
-	//public Optional<Usuario> updateUsuario(Usuario usuario);
-
+	
+	public Optional<Usuario> edit(Usuario usuario);
+	
 	public void deleteById(int id);
 
-	
 }
