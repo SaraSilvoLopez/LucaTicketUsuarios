@@ -1,9 +1,16 @@
 package com.example.spring.controller;
 
+import java.util.Collection;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +33,7 @@ import com.example.spring.service.UsuarioService;
 @RequestMapping 
 public class UsuarioController {
 	/**
-	 * Inicializa UsuarioService sev
+	 * Inicializa UsuarioService serv
 	 */
 	@Autowired
 	private UsuarioService serv;
@@ -50,9 +57,28 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/greetingAdmin")
-	public String greetingAdmin() {
+	public String greetingAdmin(){
 		
 		return "greeting Admin";
+	}
+	@GetMapping
+	public Collection<Usuario> mostrarUsuarios() {
+		return serv.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public Optional<Usuario> mostrarUsuario(@PathVariable int id) {
+		return serv.findById(id);
+	}
+	
+	@PutMapping("/usuarios/edit")
+    public Optional<Usuario> editUsuario(@RequestBody Usuario usuario) {
+        return this.serv.edit(usuario);
+    }
+	
+	@DeleteMapping("/{id}")
+	public void deleteUsuario(@PathVariable int id) {
+		serv.deleteById(id);
 	}
 
 }
