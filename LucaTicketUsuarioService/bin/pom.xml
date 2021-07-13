@@ -19,27 +19,19 @@
 		<spring.fox.version>2.9.2</spring.fox.version>
 		<spring-cloud.version>Hoxton.SR11</spring-cloud.version>
 		<lombok.version>1.18.20</lombok.version>
+		<groovy.version>3.0.7</groovy.version>
+		<rest-assured.version>4.3.3</rest-assured.version>
 	</properties>
 	<dependencies>
-
 		<dependency>
-
 			<groupId>io.springfox</groupId>
-
 			<artifactId>springfox-swagger2</artifactId>
-
 			<version>${spring.fox.version}</version>
-
 		</dependency>
-
 		<dependency>
-
 			<groupId>io.springfox</groupId>
-
 			<artifactId>springfox-swagger-ui</artifactId>
-
 			<version>${spring.fox.version}</version>
-
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -61,7 +53,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -79,6 +70,80 @@
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.5</version>
+		</dependency>
+				<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.10.7</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.10.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.10.7</version>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+           <groupId>io.rest-assured</groupId>
+           <artifactId>spring-mock-mvc</artifactId>
+           <scope>test</scope>
+           <exclusions>
+               <exclusion>
+                   <artifactId>groovy</artifactId>
+                   <groupId>org.codehaus.groovy</groupId>
+               </exclusion>
+           </exclusions>
+       </dependency>
+       <dependency>
+           <groupId>org.codehaus.groovy</groupId>
+           <artifactId>groovy</artifactId>
+           <version>${groovy.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.codehaus.groovy</groupId>
+           <artifactId>groovy-xml</artifactId>
+           <version>${groovy.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>org.codehaus.groovy</groupId>
+           <artifactId>groovy-json</artifactId>
+           <version>${groovy.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>io.rest-assured</groupId>
+           <artifactId>json-path</artifactId>
+           <version>${rest-assured.version}</version>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>io.rest-assured</groupId>
+           <artifactId>xml-path</artifactId>
+           <version>${rest-assured.version}</version>
+           <scope>test</scope>
+       </dependency>
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
