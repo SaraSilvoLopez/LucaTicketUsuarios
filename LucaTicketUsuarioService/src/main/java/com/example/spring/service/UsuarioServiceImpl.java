@@ -9,7 +9,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.ejemplos.spring.model.Student;
 import com.example.spring.exception.DemasiadosCaracteresException;
 import com.example.spring.exception.EmailExistenteException;
 import com.example.spring.exception.TipoCaracteresException;
@@ -109,15 +108,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return repo.findAll();
 	}
 	
-	@Override
-	public Optional<Usuario> update(Usuario usuario) {
-		return repo.update(usuario);
+	/*@Override
+	public Optional<Usuario> updateUsuario(Usuario usuario) {
+		return repo.updateUsuario(usuario);
 	}
 	
 	@Override
 	public Optional<Usuario> findById(int id);{
 		return repo.findById(id);
-	}
+	}*/
 
 	@Override
 	public void deleteById(int id) {
