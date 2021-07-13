@@ -16,7 +16,7 @@ public class LucaTicketGetUsuariosTest {
 			.port(2222).get("/")
 		.then().log().all()
 			.statusCode(200)
-			.body("nombre",	hasItems("Godofreo"));
+			.body("nombre",	hasItems("Topacio"));
 	}
 
 }

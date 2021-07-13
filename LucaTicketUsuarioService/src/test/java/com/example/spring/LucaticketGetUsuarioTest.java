@@ -20,11 +20,10 @@ public class LucaticketGetUsuarioTest {
 @Test
 public void getUsuarioTest() {
 given().log().all()
-.port(2222).get("/1")
+.port(2222).get("/2")
 .then().log().all()
-.statusCode(200).body("id", is(1));
+.statusCode(200).body("id", is(2));
 }
-
 
 
 }
