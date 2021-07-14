@@ -3,6 +3,8 @@ package com.example.spring.security;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,7 +23,7 @@ public class AuthenticationController {
 	private final JwtTokenProvider tokenProvider;
 	
 	@PostMapping("/usuarios/login")
-	public JwtUsuarioRespuesta login(@Valid @RequestBody LoginRequest loginRequest) {
+	public ResponseEntity<JwtUsuarioRespuesta> login(@Valid @RequestBody LoginRequest loginRequest) {
 		Authentication authentication = 
 				authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(
@@ -36,13 +38,14 @@ public class AuthenticationController {
 		Usuario usuario = (Usuario) authentication.getPrincipal();
 		String jwtToken = tokenProvider.generateToken(authentication);
 		
-		return convertUserEntityAndTokenToJwtUserResponse(usuario, jwtToken);
-				
+		return ResponseEntity.ok(convertUserEntityAndTokenToJwtUserResponse(usuario, jwtToken));
+					
 	}
 	
 	private JwtUsuarioRespuesta convertUserEntityAndTokenToJwtUserResponse(Usuario usuario, String jwtToken) {
 		return JwtUsuarioRespuesta
 				.jwtUsuarioRespuestaBuilder()
+				.id(usuario.getId())
 				.nombre(usuario.getNombre())
 				.apellido(usuario.getApellido())
 				.mail(usuario.getMail())
