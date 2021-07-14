@@ -17,6 +17,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * @Project LucaTicketUsuarioService
+ *
+ * @ClassName Usuario
+ *
+ * @author Patricia Garcia y Usoa Larrarte
+ *
+ * @date 7 jul. 2021
+ * 
+ * @version 1.0
+ */
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -27,44 +39,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private final AuthenticationEntryPoint jwtAuthenticationEntryPoint;
 	private final JwtAuthorizationFilter jwtAuthorizationFilter;
 	private final PasswordEncoder passwordEncoder;
-	
-	
+
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-	
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
 	}
-	
-	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
-		http
-			.csrf()
-				.disable()
-			.exceptionHandling()
-				.authenticationEntryPoint(jwtAuthenticationEntryPoint) 
-			.and()
-			.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-			.and()
-			.authorizeRequests()
+
+		http.csrf().disable().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
-				.antMatchers(HttpMethod.POST, "/usuarios/add").permitAll()
-				.antMatchers(HttpMethod.GET, "/greeting").hasAnyRole("USER","ADMIN")
-				.antMatchers(HttpMethod.GET, "/greetingAdmin").hasRole("ADMIN")
-				.anyRequest().permitAll();
+				.antMatchers(HttpMethod.POST, "/usuarios/add").permitAll().antMatchers(HttpMethod.GET, "/greeting")
+				.hasAnyRole("USER", "ADMIN").antMatchers(HttpMethod.GET, "/greetingAdmin").hasRole("ADMIN").anyRequest()
+				.permitAll();
 
 		http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
-		
-		
+
 	}
 
 }

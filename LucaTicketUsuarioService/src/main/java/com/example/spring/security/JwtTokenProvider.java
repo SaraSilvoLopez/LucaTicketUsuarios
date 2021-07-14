@@ -1,10 +1,13 @@
 package com.example.spring.security;
 
 import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+
 import com.example.spring.model.Usuario;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -14,6 +17,18 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.extern.java.Log;
+
+/**
+ * @Project LucaTicketUsuarioService
+ *
+ * @ClassName Usuario
+ *
+ * @author Patricia Garcia y Usoa Larrarte
+ *
+ * @date 7 jul. 2021
+ * 
+ * @version 1.0
+ */
 
 @Log
 @Component
@@ -30,38 +45,28 @@ public class JwtTokenProvider {
 	private int jwtDuracionTokenEnSegundos;
 
 	public String generateToken(Authentication authentication) {
-		
+
 		Usuario usuario = (Usuario) authentication.getPrincipal();
-		
+
 		Date tokenExpirationDate = new Date(System.currentTimeMillis() + (jwtDuracionTokenEnSegundos * 1000));
-		
-		return Jwts.builder()
-				.signWith(Keys.hmacShaKeyFor(jwtSecreto.getBytes()), SignatureAlgorithm.HS512)
-				.setHeaderParam("typ", TOKEN_TYPE)
-				.setSubject(String.valueOf(usuario.getId()))
-				.setIssuedAt(new Date())
-				.setExpiration(tokenExpirationDate)
-				.claim("nombre", usuario.getNombre())
-				.claim("apellido", usuario.getApellido())
-				.claim("rol", usuario.getRol().toString())
-				.compact();
+
+		return Jwts.builder().signWith(Keys.hmacShaKeyFor(jwtSecreto.getBytes()), SignatureAlgorithm.HS512)
+				.setHeaderParam("typ", TOKEN_TYPE).setSubject(String.valueOf(usuario.getId())).setIssuedAt(new Date())
+				.setExpiration(tokenExpirationDate).claim("nombre", usuario.getNombre())
+				.claim("apellido", usuario.getApellido()).claim("rol", usuario.getRol().toString()).compact();
 
 	}
-	
-	
+
 	public int getUserIdFromJWT(String token) {
-		Claims claims = Jwts.parser()
-							.setSigningKey(Keys.hmacShaKeyFor(jwtSecreto.getBytes()))
-							.parseClaimsJws(token)
-							.getBody();
-		
+		Claims claims = Jwts.parser().setSigningKey(Keys.hmacShaKeyFor(jwtSecreto.getBytes())).parseClaimsJws(token)
+				.getBody();
+
 		return (int) Integer.parseInt(claims.getSubject());
-		
+
 	}
-	
-	
+
 	public boolean validateToken(String authToken) {
-		
+
 		try {
 			Jwts.parser().setSigningKey(jwtSecreto.getBytes()).parseClaimsJws(authToken);
 			return true;
@@ -76,8 +81,8 @@ public class JwtTokenProvider {
 		} catch (IllegalArgumentException ex) {
 			log.info("JWT claims vacío");
 		}
-        return false;
-		
+		return false;
+
 	}
 
 }

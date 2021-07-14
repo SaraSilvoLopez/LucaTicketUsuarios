@@ -15,7 +15,8 @@ public class DemasiadosCaracteresException extends RuntimeException {
 	private static final long serialVersionUID = 4L;
 
 	/**
-	 * Personaliza el mensaje de error cuando el valor introducido supera los 50 caracteres
+	 * Personaliza el mensaje de error cuando el valor introducido supera los 50
+	 * caracteres
 	 */
 	public DemasiadosCaracteresException() {
 		super("El tamaño máximo son 50 caracteres");

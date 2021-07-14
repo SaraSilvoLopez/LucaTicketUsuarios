@@ -1,4 +1,5 @@
 package com.example.spring.repository;
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -25,12 +26,11 @@ import com.example.spring.model.Usuario;
 @Repository
 @Transactional
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-	
+
 	Optional<Usuario> findByMail(String mail);
-	
+
 	@Modifying
 	@Query("update Usuario u set u.nombre = ?1, u.apellido = ?2,u.mail = ?4, u.contrasenia = ?5  where u.id = ?3  ")
-    void editar(String nombre, String apellido, int id, String mail, String contrasenia);
-	
+	void editar(String nombre, String apellido, int id, String mail, String contrasenia);
 
 }

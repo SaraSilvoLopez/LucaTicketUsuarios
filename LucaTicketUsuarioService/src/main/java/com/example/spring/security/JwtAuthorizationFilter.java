@@ -1,20 +1,36 @@
 package com.example.spring.security;
 
 import java.io.IOException;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 import com.example.spring.model.Usuario;
 import com.example.spring.service.CustomUserDetailsService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+
+/**
+ * @Project LucaTicketUsuarioService
+ *
+ * @ClassName Usuario
+ *
+ * @author Patricia Garcia y Usoa Larrarte
+ *
+ * @date 7 jul. 2021
+ * 
+ * @version 1.0
+ */
 
 @Log
 @Component

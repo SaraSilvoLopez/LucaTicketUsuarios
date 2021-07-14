@@ -28,34 +28,28 @@ import lombok.NoArgsConstructor;
  *
  * @ClassName Usuario
  *
- * @author Jennifer Pérez y Sara Silvo
+ * @author Patricia Garcia, Usoa larrarte, Jennifer Pérez y Sara Silvo
  *
  * @date 7 jul. 2021
  * 
  * @version 1.0
  */
 
-
 /**
- * Crea la clase Usuario
- * Utiliza Lombok para crear los metodos get, set y los constructores vacio y con argumentos 
+ * Crea la clase Usuario Utiliza Lombok para crear los metodos get, set y los
+ * constructores vacio y con argumentos
  *
  */
-@Data 
-@AllArgsConstructor 
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements UserDetails {
 	
-	/**
-	 * Atributo serialVersionUID
-	 * 
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -80,12 +74,10 @@ public class Usuario implements UserDetails {
 		return true;
 	}
 
-
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
-
 
 	@Override
 	public boolean isCredentialsNonExpired() {
@@ -106,5 +98,5 @@ public class Usuario implements UserDetails {
 	public String getUsername() {
 		return this.mail;
 	}
-	
+
 }

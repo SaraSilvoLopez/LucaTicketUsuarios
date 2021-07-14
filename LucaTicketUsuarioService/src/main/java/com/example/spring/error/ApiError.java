@@ -1,6 +1,5 @@
 package com.example.spring.error;
 
-
 import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
@@ -28,8 +27,8 @@ import lombok.Setter;
 
 
 /**
- * Crea la clase ApiError
- * Utiliza Lombok para crear los metodos get, set y los constructores vacio y con argumentos 
+ *
+ * Utiliza Lombok para crear los metodos get, set y los constructores (vacio y con argumentos) 
  *
  */
 @Setter
