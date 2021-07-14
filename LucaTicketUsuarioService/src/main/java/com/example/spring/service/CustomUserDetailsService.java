@@ -9,19 +9,19 @@ import lombok.RequiredArgsConstructor;
 
 @Service("userDetailsService")
 @RequiredArgsConstructor
-public class CustomUserDetailsService implements UserDetailsService{
+public class CustomUserDetailsService implements UserDetailsService {
 
 	private final UsuarioService userEntityService;
-		
+
 	@Override
 	public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
 		return userEntityService.findByMail(mail)
-					.orElseThrow(()-> new UsernameNotFoundException(mail + " no encontrado"));
+				.orElseThrow(() -> new UsernameNotFoundException(mail + " no encontrado"));
 	}
-	
+
 	public UserDetails loadUserById(int id) throws UsernameNotFoundException {
 		return userEntityService.findById(id)
-				.orElseThrow(()-> new UsernameNotFoundException("Usuario con ID: " + id + " no encontrado"));
+				.orElseThrow(() -> new UsernameNotFoundException("Usuario con ID: " + id + " no encontrado"));
 	}
 
 }

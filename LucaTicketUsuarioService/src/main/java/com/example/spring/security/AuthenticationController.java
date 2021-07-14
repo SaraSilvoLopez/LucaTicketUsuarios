@@ -1,7 +1,5 @@
 package com.example.spring.security;
 
-import java.util.stream.Collectors;
-
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
@@ -12,8 +10,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.example.spring.model.Usuario;
+
 import lombok.RequiredArgsConstructor;
+
+/**
+ * @Project LucaTicketUsuarioService
+ *
+ * @ClassName Usuario
+ *
+ * @author Patricia Garcia y Usoa larrarte
+ *
+ * @date 7 jul. 2021
+ * 
+ * @version 1.0
+ */
 
 @RestController
 @RequiredArgsConstructor

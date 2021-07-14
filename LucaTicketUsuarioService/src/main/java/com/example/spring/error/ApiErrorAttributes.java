@@ -23,16 +23,14 @@ import org.springframework.web.server.ResponseStatusException;
  * @version 1.0
  */
 
-
-
 /**
- * Crea la clase ApiErrorAttributes extendida de DefaultErrorAttributes de la que herdara los atributos
+ * Crea la clase ApiErrorAttributes extendida de DefaultErrorAttributes de la que heredara los atributos
  * timestamp -la hora a la que se extrajeron los errores
  * status - el código de estado
  * error - el motivo del error
  * message - el mensaje del error (cuando se configura)
- * 
  */
+
 @Component
 public class ApiErrorAttributes extends DefaultErrorAttributes {
 

@@ -76,7 +76,7 @@ public class UsuarioController {
         return this.serv.edit(usuario);
     }
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/usuarios/delete/{id}")
 	public void deleteUsuario(@PathVariable int id) {
 		serv.deleteById(id);
 	}

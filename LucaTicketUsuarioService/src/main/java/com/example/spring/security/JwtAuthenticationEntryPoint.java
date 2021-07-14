@@ -17,9 +17,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * @Project LucaTicketUsuarioService
+ *
+ * @ClassName Usuario
+ *
+ * @author Patricia Garcia y Usoa larrarte
+ *
+ * @date 7 jul. 2021
+ * 
+ * @version 1.0
+ */
+
 @Component
 @RequiredArgsConstructor
-
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 	
 	private final ObjectMapper mapper;
@@ -36,8 +47,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 		
 		PrintWriter writer = response.getWriter();
 		writer.println(strApiError);
-		
-		
+
 	}
 
 }
