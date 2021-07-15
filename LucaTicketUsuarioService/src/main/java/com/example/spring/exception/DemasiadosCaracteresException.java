@@ -19,7 +19,7 @@ public class DemasiadosCaracteresException extends RuntimeException {
 	 * caracteres
 	 */
 	public DemasiadosCaracteresException() {
-		super("El tamaño máximo son 50 caracteres");
+		super("Ha superado el tamaño máximo de caracteres");
 	}
 
 }
