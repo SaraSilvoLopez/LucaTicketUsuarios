@@ -57,8 +57,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 		if (usuario.getNombre() != null && usuario.getApellido() != null && usuario.getContrasenia() != null
 				&& usuario.getMail() != null) {
-			if (usuario.getNombre().length() <= 50 && usuario.getApellido().length() <= 50
-					&& usuario.getContrasenia().length() <= 50 && usuario.getMail().length() <= 50) {
+			if (usuario.getNombre().length() <= 24 && usuario.getApellido().length() <= 24
+					&& usuario.getContrasenia().length() <= 250 && usuario.getMail().length() <= 24) {
 				if (contieneSoloLetras(usuario.getNombre()) && contieneSoloLetras(usuario.getApellido())) {
 					usuario.setContrasenia(encoder.encode(usuario.getPassword()));
 					usuario.setRol("USER");
