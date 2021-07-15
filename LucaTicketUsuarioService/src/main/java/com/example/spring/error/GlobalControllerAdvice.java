@@ -43,13 +43,13 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler(TipoCaracteresException.class)
-	public ResponseEntity<ApiError> UsuarioNoEncontrado(TipoCaracteresException ex) {
+	public ResponseEntity<ApiError> handleCaracteres(TipoCaracteresException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
 
 	@ExceptionHandler(VacioException.class)
-	public ResponseEntity<ApiError> handleNumeroEncontrado(TipoCaracteresException ex) {
+	public ResponseEntity<ApiError> handleCamposVacios(VacioException ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
