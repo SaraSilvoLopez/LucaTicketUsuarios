@@ -28,7 +28,7 @@ public interface UsuarioService {
 	
 	public List<Usuario> findAll();
 	
-	public Optional<Usuario> edit(Usuario usuario);
+	public Usuario edit(Usuario usuario);
 	
 	public void deleteById(int id);
 

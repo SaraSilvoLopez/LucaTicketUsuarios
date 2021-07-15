@@ -28,7 +28,7 @@ import com.example.spring.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
 	Optional<Usuario> findByMail(String mail);
-
+	Usuario findByid(int id);
 	@Modifying
 	@Query("update Usuario u set u.nombre = ?1, u.apellido = ?2,u.mail = ?4, u.contrasenia = ?5  where u.id = ?3  ")
 	void editar(String nombre, String apellido, int id, String mail, String contrasenia);

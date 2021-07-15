@@ -39,7 +39,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private final PasswordEncoder encoder;
 
 	/**
-	 * Instancia UsuarioRepository repo
+	 * Instancia UsuarioRepository repo 
 	 */
 
 	@Autowired
@@ -108,11 +108,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public Optional<Usuario> edit(Usuario usuario) {
+	public Usuario edit(Usuario usuario) {
 		if (repo.existsById(usuario.getId())) {
 			repo.editar(usuario.getNombre(), usuario.getApellido(), usuario.getId(), usuario.getMail(),
 					usuario.getContrasenia());
-			return repo.findById(usuario.getId());
+			return repo.findByid(usuario.getId());
 		} else {
 			throw new UsuarioNoEncontradoException();
 		}
