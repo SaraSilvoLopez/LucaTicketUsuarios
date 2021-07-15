@@ -110,6 +110,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario edit(Usuario usuario) {
 		if (repo.existsById(usuario.getId())) {
+			usuario.setContrasenia(encoder.encode(usuario.getPassword()));
 			repo.editar(usuario.getNombre(), usuario.getApellido(), usuario.getId(), usuario.getMail(),
 					usuario.getContrasenia());
 			return repo.findByid(usuario.getId());
